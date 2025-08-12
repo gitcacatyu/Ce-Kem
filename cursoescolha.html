@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CeéKem - Plataforma de Cursos</title>
+<style>
+  /* Reset simples */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: linear-gradient(90deg, orange, blue);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.6);
+  }
+
+  .logo {
+    font-weight: 900;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, orange, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  #logoutBtn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  #logoutBtn:hover {
+    background: #ff1a1a;
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p.intro {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .course-card {
+    background: linear-gradient(135deg, orange, blue);
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(255, 136, 0, 0.7);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(0, 153, 255, 0.8);
+  }
+
+  .course-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .course-desc {
+    flex-grow: 1;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-entrar {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.6rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    user-select: none;
+    transition: background 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .btn-entrar:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: #1a1a1a;
+    text-align: center;
+    font-size: 1rem;
+    color: #bbb;
+  }
+
+  /* Responsivo */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .course-card {
+      padding: 1.2rem 1rem;
+    }
+
+    .course-title {
+      font-size: 1.3rem;
+    }
+
+    .btn-entrar {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CeéKem</div>
+  <nav>
+    <button id="logoutBtn">Sair</button>
+  </nav>
+</header>
+
+<main>
+  <h1>Bem-vindo ao CeéKem! 🚀</h1>
+  <p class="intro">
+    Escolha um curso e comece sua jornada para dominar a programação com aulas práticas e conteúdo direto ao ponto.
+  </p>
+
+  <section class="courses" id="coursesList">
+    <article class="course-card" onclick="location.href='curso.html'">
+      <h2 class="course-title">Curso de JavaScript</h2>
+      <p class="course-desc">Comece do zero e aprenda os fundamentos da linguagem mais popular do mundo web.</p>
+      <button class="btn-entrar">Entrar</button>
+    </article>
+
+    <article class="course-card" onclick="location.href='cursologica.html'">
+      <h2 class="course-title">Curso de Lógica de Programação</h2>
+      <p class="course-desc">Treine seu raciocínio lógico com exercícios práticos e diretos.</p>
+      <button class="btn-entrar">Entrar</button>
+    </article>
+
+    <article class="course-card" onclick="location.href='cursotypescript.html'">
+      <h2 class="course-title">Curso de TypeScript</h2>
+      <p class="course-desc">Aprenda TypeScript depois de dominar JavaScript e Lógica.</p>
+      <button class="btn-entrar">Entrar</button>
+    </article>
+
+    <article class="course-card" onclick="location.href='cursocsshtml.html'">
+      <h2 class="course-title">Curso de CSS/HTML</h2>
+      <p class="course-desc">   Domine o desenvolvimento front-end com HTML e CSS, criando sites incríveis. </p>
+      <button class="btn-entrar">Entrar</button>
+    </article>
+
+  </section>
+</main>
+
+<footer>
+  CeéKem &copy; 2025 - Todos os direitos reservados.
+</footer>
+
+</body>
+</html>

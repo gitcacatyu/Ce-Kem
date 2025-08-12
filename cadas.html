@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CeéKem - Cadastro e Login</title>
+<style>
+  body {
+    background: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  .part-your {
+    position: relative;
+    background: linear-gradient(90deg, orange, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 1.5rem;
+  }
+
+  .part-your .e-commercial {
+    font-style: normal;
+  }
+
+  .part-your .at-symbol {
+    position: absolute;
+    top: -1.5rem;
+    left: 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff8800;
+    text-shadow: 0 0 5px #ff8800;
+  }
+
+  .part-your .m-end {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #0099ff;
+    text-shadow: 0 0 5px #0099ff;
+  }
+
+  .part-my {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    background: #222;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px #0ff;
+    user-select: none;
+  }
+
+  .code-line {
+    line-height: 1.3;
+  }
+
+  form {
+    background: #222;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 25px #0ff;
+    width: 320px;
+    max-width: 90vw;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.4rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+
+  input[type="submit"],
+  button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(90deg, orange, blue);
+    border: none;
+    border-radius: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  input[type="submit"]:hover,
+  button:hover {
+    background: linear-gradient(90deg, blue, orange);
+  }
+
+  .toggle-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #0ff;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .toggle-link:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    background: #1a1a1a;
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <h1>CeéKem</h1>
+  <div class="logo">
+    <div class="part-your">
+      <span class="e-commercial">&amp;</span>
+      <span class="at-symbol">@</span>
+      <span class="m-end">M</span>
+    </div>
+    <div class="part-my">
+      <div class="code-line">const CeéKem = "Aprendizado";</div>
+      <div class="code-line">console.log(CeéKem);</div>
+    </div>
+  </div>
+
+  <!-- Formulário de cadastro -->
+  <form id="form-cadastro">
+    <h2>Cadastre-se e comece agora</h2>
+    <label for="nome">Nome completo</label>
+    <input type="text" id="nome" required placeholder="Seu nome aqui" />
+
+    <label for="email-cad">Email</label>
+    <input type="email" id="email-cad" required placeholder="email@exemplo.com" />
+
+    <label for="senha-cad">Senha</label>
+    <input type="password" id="senha-cad" required placeholder="Sua senha segura" />
+
+    <input type="submit" value="Cadastrar" />
+    <p class="toggle-link" id="link-login">Já tem conta? Faça login</p>
+  </form>
+
+  <!-- Formulário de login escondido -->
+  <form id="form-login" style="display:none;">
+    <h2>Faça seu login</h2>
+    <label for="email-log">Email</label>
+    <input type="email" id="email-log" required placeholder="email@exemplo.com" />
+
+    <label for="senha-log">Senha</label>
+    <input type="password" id="senha-log" required placeholder="Sua senha segura" />
+
+    <input type="submit" value="Login" />
+    <p class="toggle-link" id="link-cadastro">Ainda não tem conta? Cadastre-se</p>
+  </form>
+</main>
+
+<footer>
+  <p>Quer entrar para a próxima geração de programadores que vão dominar o mundo? No CeéKem você aprende do jeito certo, com aulas práticas, desafios reais e aquela comunidade que não te deixa desistir.</p>
+  <p>Sem enrolação, só conteúdo que importa pra você brilhar de verdade na carreira tech. Bora dar o passo e fazer parte dessa revolução?</p>
+</footer>
+
+<script>
+  // Alterna entre cadastro e login
+  const formCadastro = document.getElementById('form-cadastro');
+  const formLogin = document.getElementById('form-login');
+  const linkLogin = document.getElementById('link-login');
+  const linkCadastro = document.getElementById('link-cadastro');
+
+  linkLogin.addEventListener('click', () => {
+    formCadastro.style.display = 'none';
+    formLogin.style.display = 'block';
+  });
+
+  linkCadastro.addEventListener('click', () => {
+    formLogin.style.display = 'none';
+    formCadastro.style.display = 'block';
+  });
+
+  // Cadastro básico com armazenamento local (só pra demo)
+  formCadastro.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email-cad').value.trim();
+    const senha = document.getElementById('senha-cad').value;
+
+    if(nome.length < 3){
+      alert('Coloque um nome maior, mano!');
+      return;
+    }
+    if(senha.length < 6){
+      alert('Senha muito curta! Mínimo 6 caracteres.');
+      return;
+    }
+
+    // Salva no localStorage (simples e inseguro, mas é pra testar)
+    const user = { nome, email, senha };
+    localStorage.setItem('ceekemUser', JSON.stringify(user));
+
+    alert('Cadastro feito! Agora faz o login.');
+
+    // Troca pro login
+    formCadastro.style.display = 'none';
+    formLogin.style.display = 'block';
+
+    // Preenche o email no login pra facilitar
+    document.getElementById('email-log').value = email;
+  });
+
+  // Login básico com verificação localStorage
+  formLogin.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const email = document.getElementById('email-log').value.trim();
+    const senha = document.getElementById('senha-log').value;
+
+    const savedUser = JSON.parse(localStorage.getItem('ceekemUser'));
+
+    if(!savedUser){
+      alert('Não tem cadastro, mano! Se cadastra primeiro.');
+      formLogin.style.display = 'none';
+      formCadastro.style.display = 'block';
+      return;
+    }
+
+    if(email === savedUser.email && senha === savedUser.senha){
+      alert(`Bem-vindo, ${savedUser.nome}! Tá dentro do CeéKem! 🚀`);
+      location.href = 'cursoescolha.html'; // Redireciona pra área interna (crie essa página)
+      // Aqui você já pode redirecionar pra área interna do site
+    } else {
+      alert('Email ou senha errados, tenta de novo!');
+    }
+  });
+</script>
+
+</body>
+</html>

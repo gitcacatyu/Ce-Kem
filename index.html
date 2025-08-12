@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CeéKem</title>
+<style>
+  body {
+    background: #121212; /* dark mode style */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-weight: 900;
+    font-size: 6rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Sua parte: & + @ + M */
+  .part-your {
+    position: relative;
+    background: linear-gradient(90deg, orange, blue);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 1.5rem;
+  }
+
+  .part-your .e-commercial {
+    font-style: normal;
+  }
+
+  .part-your .at-symbol {
+    position: absolute;
+    top: -1.8rem;
+    left: 3.2rem;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #ff8800;
+    text-shadow: 0 0 5px #ff8800;
+  }
+
+  .part-your .m-end {
+    position: absolute;
+    bottom: -1.8rem;
+    right: -1.2rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #0099ff;
+    text-shadow: 0 0 5px #0099ff;
+  }
+
+  /* Minha parte: códigos tech */
+  .part-my {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.8rem;
+    background: #222;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px #0ff;
+    user-select: none;
+  }
+
+  .code-line {
+    line-height: 1.3;
+  }
+
+  footer {
+    background: #1a1a1a;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  footer input[type="button"] {
+    background: linear-gradient(90deg, orange, blue);
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  footer input[type="button"]:hover {
+    background: linear-gradient(90deg, blue, orange);
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .logo {
+      font-size: 4rem;
+      flex-direction: column;
+    }
+    .part-your {
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    .part-your .at-symbol {
+      top: -1.4rem;
+      left: 2.5rem;
+      font-size: 2rem;
+    }
+    .part-your .m-end {
+      bottom: -1.4rem;
+      right: -0.8rem;
+      font-size: 2.2rem;
+    }
+    .part-my {
+      font-size: 1.4rem;
+      padding: 0.8rem 1.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <h1>CeéKem</h1>
+  
+  <div class="logo">
+    <div class="part-your">
+      <span class="e-commercial">&amp;</span>
+      <span class="at-symbol">@</span>
+      <span class="m-end">M</span>
+    </div>
+
+    <div class="part-my">
+      <div class="code-line">const CeéKem = "Aprendizado";</div>
+      <div class="code-line">console.log(CeéKem);</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Quer entrar para a próxima geração de programadores que vão dominar o mundo? No CeéKem você aprende do jeito certo, com aulas práticas, desafios reais e aquela comunidade que não te deixa desistir.</p>
+  <p>Sem enrolação, só conteúdo que importa pra você brilhar de verdade na carreira tech. Bora dar o passo e fazer parte dessa revolução?</p>
+  <input type="button" value="Cadastro" onclick="location.href='cadas.html'" />
+</footer>
+
+</body>
+</html>
+

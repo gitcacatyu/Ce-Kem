@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CeéKem - Curso de Lógica</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    #lesson-desc {
+      max-width: 700px;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    textarea {
+      width: 700px;
+      height: 200px;
+      background: #222;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-family: monospace;
+      font-size: 1.1rem;
+      padding: 1rem;
+      resize: vertical;
+      margin-bottom: 1rem;
+    }
+    #output {
+      width: 700px;
+      min-height: 100px;
+      background: #111;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      white-space: pre-wrap;
+      box-shadow: 0 0 10px #0ff;
+      margin-bottom: 2rem;
+    }
+    button {
+      background: linear-gradient(90deg, orange, blue);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      margin: 0 0.5rem;
+      transition: background 0.3s ease;
+    }
+    button:disabled {
+      background: #555;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      background: linear-gradient(90deg, blue, orange);
+    }
+    #nav-buttons {
+      margin-bottom: 3rem;
+    }
+    #btn-home {
+      margin-top: auto;
+      background: #444;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border: none;
+    }
+    #btn-home:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="lesson-title">Aula 1: Introdução à Lógica de Programação</h1>
+  <p id="lesson-desc">Nesta aula, você vai entender os conceitos básicos da lógica e fazer seu primeiro exercício de raciocínio.</p>
+
+  <textarea id="code-editor">// Escreva seu código aqui
+console.log("Olá, CeéKem! Vamos pensar em lógica!");</textarea>
+
+  <div id="output"></div>
+
+  <div id="nav-buttons">
+    <button id="prev-lesson" disabled>Anterior</button>
+    <button id="run-code">Executar Código</button>
+    <button id="next-lesson">Próximo</button>
+  </div>
+
+  <button id="btn-home">Voltar para a página inicial</button>
+
+  <script>
+const lessons = [
+  {
+    title: "Aula 1: Introdução à Lógica de Programação",
+    desc: "Entenda o que é lógica de programação e como ela é a base de tudo na programação.",
+    code: `// Olá, CeéKem!
+// Vamos pensar em lógica!
+console.log("Bem-vindo à Lógica de Programação!");`,
+    learn: "Conhecer o conceito de lógica e sua importância.",
+    explicacao: "Lógica de programação é o raciocínio que usamos para resolver problemas usando código. Antes de escrever qualquer linha, você precisa pensar na sequência certa de passos.",
+    exercicio: "No console, escreva um console.log que mostre seu nome e idade."
+  },
+  {
+    title: "Aula 2: Variáveis e Tipos de Dados",
+    desc: "Aprenda a usar variáveis e os principais tipos de dados.",
+    code: `// Declarando variáveis
+let nome = "CeéKem";
+let idade = 12;
+let aprovado = true;
+console.log(nome, idade, aprovado);`,
+    learn: "Entender variáveis e tipos primitivos: string, number e boolean.",
+    explicacao: "Variáveis guardam informações para você usar depois no código. Strings são textos, numbers são números e booleanos só têm true ou false.",
+    exercicio: "Crie variáveis para guardar seu nome (string), sua idade (number) e se você gosta de programação (boolean). Depois mostre tudo no console."
+  },
+  {
+    title: "Aula 3: Operadores Aritméticos",
+    desc: "Conheça os operadores básicos de matemática usados na programação.",
+    code: `// Operadores aritméticos
+let soma = 5 + 3;
+let subtracao = 10 - 4;
+let multiplicacao = 2 * 6;
+let divisao = 12 / 3;
+console.log(soma, subtracao, multiplicacao, divisao);`,
+    learn: "Usar +, -, *, / para fazer contas básicas.",
+    explicacao: "Os operadores permitem fazer contas no código, igual na matemática. + para soma, - subtração, * multiplicação e / divisão.",
+    exercicio: "Faça as quatro operações básicas com dois números que você escolher e mostre o resultado no console."
+  },
+  {
+    title: "Aula 4: Condicionais (if, else)",
+    desc: "Saiba como tomar decisões no seu código com condicionais.",
+    code: `// Exemplo de condicional
+let idade = 18;
+if (idade >= 18) {
+  console.log("Você é maior de idade.");
+} else {
+  console.log("Você é menor de idade.");
+}`,
+    learn: "Controlar o fluxo do programa com if e else.",
+    explicacao: "Condicionais deixam o código decidir o que fazer dependendo da situação, igual se você pode entrar em uma festa ou não.",
+    exercicio: "Escreva um código que verifica se um número é par ou ímpar e mostra a mensagem no console."
+  },
+  {
+    title: "Aula 5: Operadores de Comparação",
+    desc: "Aprenda a comparar valores para tomar decisões.",
+    code: `// Operadores de comparação
+console.log(5 > 3);   // true
+console.log(5 < 3);   // false
+console.log(5 == 5);  // true
+console.log(5 != 4);  // true`,
+    learn: "Usar >, <, ==, != para comparar valores.",
+    explicacao: "Operadores de comparação verificam se algo é maior, menor ou igual a outra coisa. Eles ajudam a decidir o que o programa deve fazer.",
+    exercicio: "Teste no console se seu número favorito é maior que 10 e mostre o resultado."
+  },
+  {
+    title: "Aula 6: Loops (while e for)",
+    desc: "Repita ações várias vezes usando loops.",
+    code: `// Loop while
+let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+// Loop for
+for (let j = 0; j < 5; j++) {
+  console.log(j);
+}`,
+    learn: "Repetir código usando while e for.",
+    explicacao: "Loops fazem o código repetir tarefas, evitando escrever a mesma coisa várias vezes. Muito útil pra listas e contagens.",
+    exercicio: "Crie um loop que conte de 1 até 10 e mostre os números no console."
+  },
+  {
+    title: "Aula 7: Funções",
+    desc: "Crie blocos de código reutilizáveis com funções.",
+    code: `// Função simples
+function saudacao(nome) {
+  console.log("Olá, " + nome + "!");
+}
+
+saudacao("CeéKem");`,
+    learn: "Entender como definir e usar funções.",
+    explicacao: "Funções guardam código que você pode usar várias vezes, como uma receita que pode ser repetida quando quiser.",
+    exercicio: "Crie uma função que recebe dois números e mostra a soma deles no console."
+  },
+  {
+    title: "Aula 8: Arrays",
+    desc: "Armazene listas de dados com arrays.",
+    code: `// Criando um array
+let frutas = ["Maçã", "Banana", "Laranja"];
+console.log(frutas[0]); // Maçã
+console.log(frutas.length); // 3`,
+    learn: "Manipular coleções de dados com arrays.",
+    explicacao: "Arrays são listas que guardam vários valores numa ordem. Você pode acessar cada item pela posição.",
+    exercicio: "Crie um array com seus 3 jogos favoritos e mostre o primeiro e o último no console."
+  },
+  {
+    title: "Aula 9: Objetos",
+    desc: "Organize dados relacionados usando objetos.",
+    code: `// Criando um objeto
+let pessoa = {
+  nome: "Kaká",
+  idade: 12,
+  batizado: true
+};
+console.log(pessoa.nome); // Kaká`,
+    learn: "Usar objetos para representar informações complexas.",
+    explicacao: "Objetos juntam várias informações relacionadas, tipo um cartão de identidade com nome, idade, etc.",
+    exercicio: "Crie um objeto com informações sobre você e mostre o seu nome e idade no console."
+  },
+  {
+    title: "Aula 10: Exercício PréFinal",
+    desc: "Aplique tudo que aprendeu em um exercício prático.",
+    code: `// Função que soma dois números
+function soma(a, b) {
+  return a + b;
+}
+
+console.log(soma(5, 7)); // 12`,
+
+    learn: "Consolidar conhecimento com prática.",
+    explicacao: "Hora de juntar tudo que você viu até agora e fazer um código que funcione de verdade!",
+    exercicio: "Crie uma função que recebe um número e diz se ele é par ou ímpar. Teste com alguns números."
+  },
+
+    {
+        title: "Aula 11: Revisão e Próximos Passos",
+        desc: "Revise o que aprendeu e veja o que vem a seguir.",
+        code: `// Revisão rápida
+console.log("Revisão: Lógica de Programação é a base de tudo!");`,
+        learn: "Rever conceitos e se preparar para o próximo nível.",
+        explicacao: "Revisar é importante para fixar o que você aprendeu. Agora você já tem uma boa base para seguir em frente.",
+        exercicio: "Escreva um resumo do que você aprendeu e como pretende usar isso no futuro."
+    }
+
+];
+
+// Controle do progresso e navegação
+let currentLesson = 0;
+
+const lessonTitle = document.getElementById('lesson-title');
+const lessonDesc = document.getElementById('lesson-desc');
+const codeEditor = document.getElementById('code-editor');
+const output = document.getElementById('output');
+const prevBtn = document.getElementById('prev-lesson');
+const nextBtn = document.getElementById('next-lesson');
+const runBtn = document.getElementById('run-code');
+const btnHome = document.getElementById('btn-home');
+
+function loadLesson(index) {
+  const lesson = lessons[index];
+  lessonTitle.textContent = lesson.title;
+  lessonDesc.textContent = lesson.desc;
+  codeEditor.value = lesson.code;
+  output.textContent = '';
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index === lessons.length - 1;
+}
+
+function saveProgress() {
+  const progress = {
+    lessonIndex: currentLesson,
+    code: codeEditor.value
+  };
+  localStorage.setItem('ceekemProgress', JSON.stringify(progress));
+}
+
+function loadProgress() {
+  const saved = localStorage.getItem('ceekemProgress');
+  if (saved) {
+    const progress = JSON.parse(saved);
+    if (progress.lessonIndex >= 0 && progress.lessonIndex < lessons.length) {
+      currentLesson = progress.lessonIndex;
+      lessonTitle.textContent = lessons[currentLesson].title;
+      lessonDesc.textContent = lessons[currentLesson].desc;
+      codeEditor.value = progress.code || lessons[currentLesson].code;
+      output.textContent = '';
+      prevBtn.disabled = currentLesson === 0;
+      nextBtn.disabled = currentLesson === lessons.length - 1;
+      return;
+    }
+  }
+  loadLesson(currentLesson);
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentLesson > 0) {
+    currentLesson--;
+    loadLesson(currentLesson);
+    saveProgress();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentLesson < lessons.length - 1) {
+    currentLesson++;
+    loadLesson(currentLesson);
+    saveProgress();
+  }
+});
+
+runBtn.addEventListener('click', () => {
+  output.textContent = '';
+  try {
+    const log = [];
+    const originalConsoleLog = console.log;
+    console.log = (...args) => {
+      log.push(args.join(' ') + '\n');
+    };
+    eval(codeEditor.value);
+    console.log = originalConsoleLog;
+    output.textContent = log.join('');
+  } catch (err) {
+    output.textContent = 'Erro: ' + err.message;
+  }
+  saveProgress();
+});
+
+btnHome.addEventListener('click', () => {
+  location.href = 'cursoescolha.html'; // Voltar pra home
+});
+
+// Carrega progresso ou aula inicial ao abrir
+loadProgress();
+
+  </script>
+
+</body>
+</html>

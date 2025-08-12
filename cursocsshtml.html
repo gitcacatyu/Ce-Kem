@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CeéKem? Curso HTML + CSS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.6;
+      background: linear-gradient(90deg, orange, blue);
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav button {
+      background: orange;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    nav button:hover {
+      background: linear-gradient(90deg, gray, rgb(255, 255, 255));
+    }
+    .aula {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .aula.active {
+      display: block;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 10px;
+      overflow-x: auto;
+      border-radius: 5px;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .copy-btn:hover {
+      background: #218838;
+    }
+    .resultado {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      background: #fff;
+    }
+    @keyframes girar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1> CeéKem? Curso HTML + CSS</h1>
+
+  <nav>
+    <button onclick="showAula(1)">Aula 1</button>
+    <button onclick="showAula(2)">Aula 2</button>
+    <button onclick="showAula(3)">Aula 3</button>
+    <button onclick="showAula(4)">Aula 4</button>
+    <button onclick="showAula(5)">Aula 5</button>
+    <button onclick="showAula(6)">Aula 6</button>
+    <button onclick="showAula(7)">Aula 7</button>
+  </nav>
+
+  <!-- AULA 1 -->
+  <div class="aula active" id="aula1">
+    <h2>Aula 1 – HTML Básico</h2>
+    <p>Estrutura mínima de uma página HTML.</p>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Minha Primeira Página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Olá, mundo!&lt;/h1&gt;
+  &lt;p&gt;Esse é o meu primeiro site usando HTML.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+    <div class="resultado">
+      <h1>Olá, mundo!</h1>
+      <p>Esse é o meu primeiro site usando HTML.</p>
+    </div>
+  </div>
+
+  <!-- AULA 2 -->
+  <div class="aula" id="aula2">
+    <h2>Aula 2 – Listas, Links e Imagens</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;ul&gt;
+  &lt;li&gt;Arroz&lt;/li&gt;
+  &lt;li&gt;Feijão&lt;/li&gt;
+  &lt;li&gt;Macarrão&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href="https://google.com" target="_blank"&gt;Ir para o Google&lt;/a&gt;
+
+&lt;img src="https://via.placeholder.com/150" alt="Imagem de exemplo"&gt;
+    </pre>
+    <div class="resultado">
+      <ul>
+        <li>Arroz</li>
+        <li>Feijão</li>
+        <li>Macarrão</li>
+      </ul>
+      <a href="https://google.com" target="_blank">Ir para o Google</a><br><br>
+      <img src="https://via.placeholder.com/150" alt="Imagem de exemplo">
+    </div>
+  </div>
+
+  <!-- AULA 3 -->
+  <div class="aula" id="aula3">
+    <h2>Aula 3 – CSS Básico</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;style&gt;
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    color: darkblue;
+    text-align: center;
+  }
+  p {
+    color: #333;
+    font-size: 18px;
+  }
+&lt;/style&gt;
+
+&lt;h1&gt;Meu Site Estilizado&lt;/h1&gt;
+&lt;p&gt;Agora meu site tem cores e fontes diferentes!&lt;/p&gt;
+    </pre>
+    <div class="resultado" style="background-color: #f0f0f0; padding: 10px;">
+      <h1 style="color: darkblue; text-align: center;">Meu Site Estilizado</h1>
+      <p style="color: #333; font-size: 18px;">Agora meu site tem cores e fontes diferentes!</p>
+    </div>
+  </div>
+
+  <!-- AULA 4 -->
+  <div class="aula" id="aula4">
+    <h2>Aula 4 – Cartão com CSS</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;style&gt;
+  .card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .card img {
+    width: 100px;
+    border-radius: 50%;
+  }
+&lt;/style&gt;
+
+&lt;div class="card"&gt;
+  &lt;img src="https://via.placeholder.com/100" alt="Foto"&gt;
+  &lt;h2&gt;Kaká&lt;/h2&gt;
+  &lt;p&gt;Estudante de programação&lt;/p&gt;
+&lt;/div&gt;
+    </pre>
+    <div class="resultado">
+      <div style="background:white;padding:20px;border-radius:10px;width:250px;margin:auto;text-align:center;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+        <img src="https://via.placeholder.com/100" style="width:100px;border-radius:50%;" alt="Foto">
+        <h2 style="margin:10px 0;color:#444;">Kaká</h2>
+        <p>Estudante de programação</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 5 -->
+  <div class="aula" id="aula5">
+    <h2>Aula 5 – Responsividade</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;style&gt;
+  .caixa {
+    width: 80%;
+    background: lightblue;
+    padding: 20px;
+    margin: auto;
+  }
+  @media (max-width: 600px) {
+    .caixa {
+      background: lightcoral;
+      width: 100%;
+    }
+  }
+&lt;/style&gt;
+
+&lt;div class="caixa"&gt;Caixa responsiva&lt;/div&gt;
+    </pre>
+    <div class="resultado">
+      <div style="width:80%;background:lightblue;padding:20px;margin:auto;">
+        Caixa responsiva (mude o tamanho da tela para testar)
+      </div>
+    </div>
+  </div>
+
+  <!-- AULA 6 -->
+  <div class="aula" id="aula6">
+    <h2>Aula 6 – Animações CSS</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;style&gt;
+  .bola {
+    width: 50px;
+    height: 50px;
+    background: red;
+    border-radius: 50%;
+    animation: girar 2s linear infinite;
+  }
+  @keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+&lt;/style&gt;
+
+&lt;div class="bola"&gt;&lt;/div&gt;
+    </pre>
+    <div class="resultado">
+      <div style="width:50px;height:50px;background:red;border-radius:50%;animation:girar 2s linear infinite;"></div>
+    </div>
+  </div>
+
+  <!-- AULA 7 -->
+  <div class="aula" id="aula7">
+    <h2>Aula 7 – Botão com Gradiente</h2>
+    <pre><button class="copy-btn" onclick="copiar(this)">Copiar</button>
+&lt;style&gt;
+  .btn-grad {
+    background: linear-gradient(90deg, orange, blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .btn-grad:hover {
+    background: linear-gradient(90deg, blue, orange);
+  }
+&lt;/style&gt;
+
+&lt;button class="btn-grad"&gt;Clique Aqui&lt;/button&gt;
+    </pre>
+    <div class="resultado">
+      <button style="background:linear-gradient(90deg,orange,blue);color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;transition:0.3s;" onmouseover="this.style.background='linear-gradient(90deg,blue,orange)'" onmouseout="this.style.background='linear-gradient(90deg,orange,blue)'">Clique Aqui</button>
+    </div>
+  </div>
+
+  <script>
+    function showAula(num) {
+      document.querySelectorAll('.aula').forEach(aula => aula.classList.remove('active'));
+      document.getElementById('aula' + num).classList.add('active');
+    }
+    function copiar(btn) {
+      let codigo = btn.parentElement.innerText.replace("Copiar", "").trim();
+      navigator.clipboard.writeText(codigo);
+      btn.innerText = "Copiado!";
+      setTimeout(() => btn.innerText = "Copiar", 1500);
+    }
+  </script>
+</body>
+</html>

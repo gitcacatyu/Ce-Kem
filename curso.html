@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CeéKem - Curso JavaScript Básico</title>
+<style>
+  body {
+    margin: 0;
+    background: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  header {
+    background: linear-gradient(90deg, orange, blue);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-desc {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  textarea {
+    background: #222;
+    border: none;
+    border-radius: 0.6rem;
+    color: white;
+    font-family: monospace;
+    font-size: 1rem;
+    padding: 1rem;
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(90deg, orange, blue);
+    border: none;
+    border-radius: 0.7rem;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(90deg, blue, orange);
+  }
+
+  .nav-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .output {
+    margin-top: 2rem;
+    background: #000;
+    border-radius: 0.6rem;
+    padding: 1rem;
+    min-height: 120px;
+    font-family: monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    overflow-y: auto;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #1a1a1a;
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>CeéKem - Curso JavaScript Básico</div>
+  <button id="btn-home">Voltar para Home</button>
+</header>
+
+<main>
+  <h1 id="lesson-title">Aula 1: Introdução ao JavaScript</h1>
+  <p class="lesson-desc" id="lesson-desc">
+    Nesta aula, você vai conhecer o básico do JavaScript. Tente editar o código abaixo e testar para ver o resultado!
+  </p>
+
+  <textarea id="code-editor">
+// Escreva seu código aqui
+console.log("Olá, CeéKem!");
+  </textarea>
+
+  <button id="run-code">Testar Código</button>
+
+  <pre class="output" id="output"></pre>
+
+  <div class="nav-buttons">
+    <button id="prev-lesson" disabled>← Aula Anterior</button>
+    <button id="next-lesson">Próxima Aula →</button>
+  </div>
+</main>
+
+<footer>
+  CeéKem &copy; 2025 - Bora dominar o código!
+</footer>
+
+<script>
+  // Array com aulas básicas
+const lessons = [
+  
+   {
+   title: "Aula 1: Introdução ao JavaScript",
+   desc: "Aprenda o básico do JavaScript, a linguagem que vai te levar longe no mundo da programação!",
+   code: '// Escreva seu código aqui\nconsole.log("Olá, CeéKem!");',
+   alert: "Essa passagem de aula tem uma sequência: Aula 1, Aula 3, Aula 5, Aula 7, Aula 8 depois volta pra Aula 2, Aula 4 e Aula 6."
+ },
+
+  {
+    title: "Aula 2: Variáveis e Tipos",
+    desc: "Aprenda a criar variáveis e entender os tipos básicos em JavaScript.",
+    code: '// Declare uma variável\nlet nome = "Kaká";\nconsole.log("Olá, " + nome);'
+  },
+  {
+    title: "Aula 3: Funções",
+    desc: "Funções são blocos de código que executam tarefas. Veja um exemplo simples:",
+    code: 'function saudacao() {\n  console.log("Bem-vindo ao CeéKem!");\n}\nsaudacao();'
+  },
+  {
+    title: "Aula 4: Condicionais",
+    desc: "Aprenda a tomar decisões no código usando if e else.",
+    code: 'let nota = 7;\nif (nota >= 7) {\n  console.log("Aprovado!");\n} else {\n  console.log("Estude mais!");\n}'
+  },
+  {
+    title: "Aula 5: Arrays",
+    desc: "Arrays são listas que guardam vários valores. Vamos aprender como usar!",
+    code: 'const frutas = ["Maçã", "Banana", "Laranja"];\nconsole.log(frutas[0]); // Maçã\nconsole.log(frutas.length); // Quantidade de itens'
+  },
+  {
+    title: "Aula 6: Loops",
+    desc: "Loops ajudam a repetir tarefas no código. Conheça o for e while.",
+    code: 'for(let i = 0; i < 5; i++) {\n  console.log("Número " + i);\n}\n\nlet count = 0;\nwhile(count < 3) {\n  console.log("Contando: " + count);\n  count++;\n}'
+    
+  },
+  {
+    title: "Aula 7: Objetos básicos",
+    desc: "Objetos guardam informações em pares chave-valor. Vamos criar um!",
+    code: 'const pessoa = {\n  nome: "Carlos",\n  idade: 12,\n  cidade: "São Paulo"\n};\nconsole.log(pessoa.nome);\nconsole.log(pessoa["idade"]);'
+  },
+  {
+    title: "Aula 8: Eventos no navegador",
+    desc: "Interaja com o usuário usando eventos, como clicar em botões.",
+    code: '// Abra o console do navegador e clique no botão\nconst btn = document.createElement("button");\nbtn.textContent = "Clique aqui";\ndocument.body.appendChild(btn);\n\nbtn.addEventListener("click", () => {\n  console.log("Botão clicado!");\n});'
+    
+  },
+    {
+        title: "Aula 9: Manipulação de DOM",
+        desc: "Aprenda a mudar o conteúdo da página com JavaScript.",
+        code: 'document.body.style.backgroundColor = "#f0f0f0";\nconst titulo = document.createElement("h1");\ntitulo.textContent = "Bem-vindo ao CeéKem!";\ndocument.body.appendChild(titulo);'
+    },
+
+    {
+        title: "Aula 10: Introdução ao JSON",
+        desc: "JSON é um formato de dados muito usado. Vamos ver como funciona!",
+        code: 'const pessoa = {\n  nome: "Ana",\n  idade: 25,\n  cidade: "Rio de Janeiro"\n};\nconst jsonPessoa = JSON.stringify(pessoa);\nconsole.log(jsonPessoa);'
+    },
+
+    {
+        title: "Aula 11: Fetch API",
+        desc: "Aprenda a buscar dados de APIs usando JavaScript.",
+        code: 'fetch("https://jsonplaceholder.typicode.com/posts")\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error("Erro:", error));'
+    },
+   
+    {
+        title: "Aula 12: Tratamento de Erros",
+        desc: "Entenda como tratar erros no seu código para evitar quebras.",
+        code: 'try {\n  console.log("Tentando executar...");\n  throw new Error("Algo deu errado!");\n} catch (error) {\n  console.error("Erro capturado:", error.message);\n}'
+    },
+    {
+        title: "Aula 13: Módulos",
+        desc: "Aprenda a organizar seu código em módulos para facilitar a manutenção.",
+        code: '// Crie um arquivo chamado saudacao.js\nexport const saudacao = nome => `Olá, ${nome}!`;\n\n// E importe no seu arquivo principal\nimport { saudacao } from "./saudacao.js";\nconsole.log(saudacao("Maria"));'
+    },
+    {
+        title: "Aula 14: Promises",
+        desc: "Entenda como funcionam as Promises para lidar com operações assíncronas.",
+        code: 'const promessa = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve("Operação concluída!");\n  }, 2000);\n});\n\npromessa.then(result => console.log(result));'
+    },
+
+
+    {
+        title: "Aula 15: Async/Await",
+        desc: "Simplifique o uso de Promises com async/await.",
+        code: 'const fetchData = async () => {\n  try {\n    const response = await fetch("https://jsonplaceholder.typicode.com/posts");\n    const data = await response.json();\n    console.log(data);\n  } catch (error) {\n    console.error("Erro ao buscar dados:", error);\n  }\n};\n\nfetchData();'
+    },
+    {
+        title: "Aula 16: Local Storage",
+        desc: "Aprenda a salvar dados no navegador usando Local Storage.",
+        code: 'localStorage.setItem("nome", "João");\nconst nome = localStorage.getItem("nome");\nconsole.log("Nome salvo:", nome);'
+    },
+    {
+        title: "Aula 17: Eventos de Teclado",
+        desc: "Capture eventos de teclado para interagir com o usuário.",
+        code: 'document.addEventListener("keydown", event => {\n  console.log("Tecla pressionada:", event.key);\n});'
+    },
+    {
+        title: "Aula 18: Manipulação de Estilos",
+        desc: "Aprenda a mudar estilos de elementos dinamicamente.",
+        code: 'const box = document.createElement("div");\nbox.style.width = "100px";\nbox.style.height = "100px";\nbox.style.backgroundColor = "blue";\ndocument.body.appendChild(box);'
+    },
+    {
+        title: "Aula 19: Trabalhando com Datas",
+        desc: "Manipule datas e horas com JavaScript.",
+        code: 'const hoje = new Date();\nconsole.log("Hoje é:", hoje.toLocaleDateString());\nconsole.log("Hora atual:", hoje.toLocaleTimeString());'
+    }
+     
+
+];
+
+
+let currentLesson = 0;
+
+const lessonTitle = document.getElementById('lesson-title');
+const lessonDesc = document.getElementById('lesson-desc');
+const codeEditor = document.getElementById('code-editor');
+const output = document.getElementById('output');
+const prevBtn = document.getElementById('prev-lesson');
+const nextBtn = document.getElementById('next-lesson');
+const runBtn = document.getElementById('run-code');
+const btnHome = document.getElementById('btn-home');
+
+function loadLesson(index) {
+  const lesson = lessons[index];
+  lessonTitle.textContent = lesson.title;
+  lessonDesc.textContent = lesson.desc;
+  codeEditor.value = lesson.code;
+  output.textContent = '';
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index === lessons.length - 1;
+}
+
+function saveProgress() {
+  const progress = {
+    lessonIndex: currentLesson,
+    code: codeEditor.value
+  };
+  localStorage.setItem('ceekemProgress', JSON.stringify(progress));
+}
+
+function loadProgress() {
+  const saved = localStorage.getItem('ceekemProgress');
+  if (saved) {
+    const progress = JSON.parse(saved);
+    if (progress.lessonIndex >= 0 && progress.lessonIndex < lessons.length) {
+      currentLesson = progress.lessonIndex;
+      lessonTitle.textContent = lessons[currentLesson].title;
+      lessonDesc.textContent = lessons[currentLesson].desc;
+      codeEditor.value = progress.code || lessons[currentLesson].code;
+      output.textContent = '';
+      prevBtn.disabled = currentLesson === 0;
+      nextBtn.disabled = currentLesson === lessons.length - 1;
+      return;
+    }
+  }
+  loadLesson(currentLesson);
+}
+
+prevBtn.addEventListener('click', () => {
+  if (currentLesson > 0) {
+    currentLesson--;
+    loadLesson(currentLesson);
+    saveProgress();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentLesson < lessons.length - 1) {
+    currentLesson++;
+    loadLesson(currentLesson);
+    saveProgress();
+  }
+});
+
+runBtn.addEventListener('click', () => {
+  output.textContent = '';
+  try {
+    const log = [];
+    const originalConsoleLog = console.log;
+    console.log = (...args) => {
+      log.push(args.join(' ') + '\n');
+    };
+    eval(codeEditor.value);
+    console.log = originalConsoleLog;
+    output.textContent = log.join('');
+  } catch (err) {
+    output.textContent = 'Erro: ' + err.message;
+  }
+  saveProgress();
+});
+
+btnHome.addEventListener('click', () => {
+  location.href = 'cursoescolha.html'; // página inicial
+});
+
+// Carrega progresso ou primeira aula ao abrir
+loadProgress();
+
+</script>
+
+</body>
+</html>
