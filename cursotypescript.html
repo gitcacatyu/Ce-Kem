@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CeéKem - Curso TS + Editor</title>
+<style>
+  body {
+    background: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 20px;
+  }
+  nav {
+    margin-bottom: 20px;
+  }
+  nav button {
+    background: linear-gradient(90deg, orange, blue);
+    border: none;
+    margin-right: 10px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  nav button:hover {
+    background: linear-gradient(90deg, blue, orange);
+  }
+  section.aula {
+    display: none;
+    background: #222;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+  section.aula.active {
+    display: block;
+  }
+  pre {
+    background: #333;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    position: relative;
+  }
+  .copy-btn {
+    background: green;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  #editor-container {
+    background: #222;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  #codigo {
+    width: 100%;
+    height: 150px;
+    background: #121212;
+    color: #0ff;
+    border: none;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  #rodar-btn {
+    margin-top: 10px;
+    background: linear-gradient(90deg, orange, blue);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #output {
+    margin-top: 15px;
+    background: black;
+    color: #0f0;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 60px;
+    font-family: monospace;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+
+<h1>CeéKem - Mini Curso TypeScript + Editor JS</h1>
+
+<nav>
+  <button onclick="mostrarAula(1)">Aula 1</button>
+  <button onclick="mostrarAula(2)">Aula 2</button>
+  <button onclick="mostrarAula(3)">Aula 3</button>
+  <button onclick="mostrarAula(4)">Aula 4</button>
+  <button onclick="mostrarAula(5)">Aula 5</button>
+</nav>
+
+<section id="aula1" class="aula active">
+  <h2>Aula 1 - O que é TypeScript?</h2>
+  <button class="copy-btn" onclick="copiarCodigo(this)">Copiar Código</button>
+  <pre>
+let nome: string = "Kaká";
+console.log("Olá, " + nome);
+  </pre>
+</section>
+
+<section id="aula2" class="aula">
+  <h2>Aula 2 - Tipos Básicos</h2>
+  <button class="copy-btn" onclick="copiarCodigo(this)">Copiar Código</button>
+  <pre>
+let idade: number = 12;
+let ativo: boolean = true;
+let nomes: string[] = ["Kaká", "Carlos"];
+  </pre>
+</section>
+
+<section id="aula3" class="aula">
+  <h2>Aula 3 - Funções com Tipos</h2>
+  <button class="copy-btn" onclick="copiarCodigo(this)">Copiar Código</button>
+  <pre>
+function soma(a: number, b: number): number {
+  return a + b;
+}
+
+console.log(soma(3, 4));  // 7
+  </pre>
+</section>
+
+<section id="aula4" class="aula">
+  <h2>Aula 4 - Interfaces</h2>
+  <button class="copy-btn" onclick="copiarCodigo(this)">Copiar Código</button>
+  <pre>
+interface Usuario {
+  nome: string;
+  idade: number;
+  ativo: boolean;
+}
+
+const usuario1: Usuario = {
+  nome: "Kaká",
+  idade: 12,
+  ativo: true
+};
+  </pre>
+</section>
+
+<section id="aula5" class="aula">
+  <h2>Aula 5 - Compilar e Rodar TS</h2>
+  <button class="copy-btn" onclick="copiarCodigo(this)">Copiar Código</button>
+  <pre>
+Para instalar o TypeScript e compilar arquivos .ts, use:
+  npm install -g typescript
+  tsc arquivo.ts
+  </pre>
+</section>
+
+<div id="editor-container">
+  <h2>Editor JS ao vivo</h2>
+  <textarea id="codigo" placeholder="Escreve seu código JS aqui...">// Exemplo: console.log('Oi, CeéKem!')</textarea>
+  <button id="rodar-btn" onclick="rodarCodigo()">Rodar Código</button>
+  <pre id="output">Resultado vai aparecer aqui...</pre>
+</div>
+
+<script>
+  function mostrarAula(num) {
+    document.querySelectorAll('.aula').forEach(a => a.classList.remove('active'));
+    document.getElementById('aula' + num).classList.add('active');
+  }
+
+  function copiarCodigo(btn) {
+    const codigo = btn.nextElementSibling.innerText;
+    navigator.clipboard.writeText(codigo);
+    btn.textContent = 'Copiado!';
+    setTimeout(() => btn.textContent = 'Copiar Código', 1500);
+  }
+
+  function rodarCodigo() {
+    const codigo = document.getElementById('codigo').value;
+    try {
+      const resultado = eval(codigo);
+      document.getElementById('output').textContent = resultado === undefined ? 'Rodou sem retorno | Caso -> console no navegador' : resultado;
+    } catch(e) {
+      document.getElementById('output').textContent = 'Erro: ' + e.message;
+    }
+  }
+</script>
+
+</body>
+</html>
