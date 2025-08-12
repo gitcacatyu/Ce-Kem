@@ -207,6 +207,21 @@
 <footer>
   CeéKem &copy; 2025 - Todos os direitos reservados.
 </footer>
+ <script>
+  window.onload = () => {
+      const user = JSON.parse(localStorage.getItem('usuarioLogado'));
+      if(!user){
+        alert('Tu precisa fazer login!');
+        location.href = 'index.html';
+      } else {
+        document.getElementById('nomeUsuario').textContent = user.nome;
+      }
+    };
+    function logout() {
+      localStorage.removeItem('usuarioLogado');
+      location.href = 'index.html';
+    }
 
+ </script>
 </body>
 </html>

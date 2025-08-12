@@ -266,13 +266,17 @@
     }
 
     if(email === savedUser.email && senha === savedUser.senha){
-      alert(`Bem-vindo, ${savedUser.nome}! Tá dentro do CeéKem! 🚀`);
-      location.href = 'cursoescolha.html'; // Redireciona pra área interna (crie essa página)
-      // Aqui você já pode redirecionar pra área interna do site
-    } else {
-      alert('Email ou senha errados, tenta de novo!');
-    }
+  // Salva no localStorage que tá logado
+  localStorage.setItem('usuarioLogado', JSON.stringify(savedUser));
+
+  alert(`Bem-vindo, ${savedUser.nome}! Tá dentro do CeéKem! 🚀`);
+  location.href = 'cursoescolha.html'; // redireciona para a área interna
+}
+else {
+  alert('Email ou senha errados! Tenta de novo.');
+}
   });
+  
 </script>
 
 </body>
