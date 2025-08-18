@@ -166,7 +166,7 @@
 <header>
   <div class="logo">CeéKem</div>
   <nav>
-    <button id="logoutBtn" onclick="function logout() { localStorage.removeItem('usuarioLogado');location.href = 'index.html';}">Sair</button>
+    <button id="logoutBtn" onclick="logout()">Sair</button>
   </nav>
 </header>
 
@@ -221,7 +221,7 @@
       localStorage.removeItem('usuarioLogado');
       location.href = 'index.html';
     }
-
+   function logout() { localStorage.removeItem('usuarioLogado');location.href = 'index.html';}
  </script>
 </body>
 </html>
